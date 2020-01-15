@@ -23,13 +23,7 @@ $post_image=$post->thumbnail;
 $post_created_at=$post->created_at;
 ?>
 <div class="tweetEntry-tweetHolder">
-
-        
-        <!-- Entry with Media turned on. -->
-      
         <div class="tweetEntry">
-            {{-- <span><a href="#editLessonModal" class="btn btn-warning" data-toggle="modal" data-lesson_id="{{$lessons_id}}" data-lesson_title="{{$lessons_title}}" data-lesson_duration="{{$lessons_duration}}" data-lesson_video_url="{{$lessons_video}}" data-course_id="{{$course_id}}">Edit Lesson</button></a></span>
-                    --}}
           
           <div class="tweetEntry-content">
             
@@ -41,7 +35,7 @@ $post_created_at=$post->created_at;
                 <?php
                   $user_name=App\User::find($post_user_id);
                 ?>
-                
+                  {{-- active staus --}}
                   @if($user_name->isOnline())
                   <li class="text-suceess" style="color:green">
                       Acive 
@@ -56,6 +50,7 @@ $post_created_at=$post->created_at;
                  ?> {{$user_name->name}}
               </strong>
               
+              {{-- email --}}
               <span class="tweetEntry-username">
                   <b>{{$user_name->email}}</b>
               </span>
@@ -63,13 +58,14 @@ $post_created_at=$post->created_at;
               <span class="tweetEntry-timestamp">- {{$post_created_at}}</span>
               
             </a>
-            
+            {{-- handles the post status --}}
             <div class="tweetEntry-text-container">
                 {{$post_status}}
             </div>
             
           </div>
           
+         {{-- handles the post image --}}
           <div class="optionalMedia">
               <img class="optionalMedia-img" src="{{asset('uploads/posts/'.$post_image)}}">
           </div>
